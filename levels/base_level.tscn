@@ -1,3 +1,300 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://elements/black_tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://elements/white_tile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://elements/spike_tile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://elements/SpawnPoint.tscn" type="PackedScene" id=4]
+[ext_resource path="res://elements/ExitPoint.tscn" type="PackedScene" id=5]
 
 [node name="BaseLevel" type="Node2D"]
+position = Vector2( 0, 1.43198 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -1.5 )
+anchor_mode = 0
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="LevelMap" type="Node2D" parent="."]
+
+[node name="Tile" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 14.568 )
+
+[node name="Tile9" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 48, 14.568 )
+
+[node name="Tile7" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 48, 110.568 )
+
+[node name="Tile14" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 112, 14.568 )
+
+[node name="Tile29" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 302.568 )
+
+[node name="Tile70" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 398.568 )
+
+[node name="Tile32" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 176, 206.568 )
+
+[node name="Tile58" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 272, 14.568 )
+
+[node name="Tile45" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 592, 462.568 )
+
+[node name="Tile72" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 752, 462.568 )
+
+[node name="Tile57" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 592, 14.5681 )
+
+[node name="Tile81" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 656, 14.5681 )
+
+[node name="Tile19" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 142.568 )
+
+[node name="Tile26" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 112, 462.568 )
+
+[node name="Tile39" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 432, 462.568 )
+
+[node name="Tile53" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 432, 14.568 )
+
+[node name="Tile43" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 238.568 )
+
+[node name="Tile2" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 46.568 )
+
+[node name="Tile8" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 80, 110.568 )
+
+[node name="Tile10" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 144, 14.568 )
+
+[node name="Tile23" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 334.568 )
+
+[node name="Tile68" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 430.568 )
+
+[node name="Tile35" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 176, 142.568 )
+
+[node name="Tile50" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 304, 14.568 )
+
+[node name="Tile40" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 624, 462.568 )
+
+[node name="Tile71" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 462.568 )
+
+[node name="Tile55" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 624, 14.5681 )
+
+[node name="Tile80" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 688, 14.5681 )
+
+[node name="Tile18" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 174.568 )
+
+[node name="Tile25" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 144, 462.568 )
+
+[node name="Tile38" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 464, 462.568 )
+
+[node name="Tile54" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 464, 14.568 )
+
+[node name="Tile44" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 270.568 )
+
+[node name="Tile79" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 720, 14.5681 )
+
+[node name="Tile3" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 78.568 )
+
+[node name="Tile6" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 48, 238.568 )
+
+[node name="Tile13" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 176, 14.568 )
+
+[node name="Tile20" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 462.568 )
+
+[node name="Tile37" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 176, 174.568 )
+
+[node name="Tile52" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 336, 14.568 )
+
+[node name="Tile42" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 366.568 )
+
+[node name="Tile77" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 430.568 )
+
+[node name="Tile15" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 206.568 )
+
+[node name="Tile27" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 176, 462.568 )
+
+[node name="Tile30" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 496, 462.568 )
+
+[node name="Tile74" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 656, 462.568 )
+
+[node name="Tile61" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 496, 14.568 )
+
+[node name="Tile48" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 302.568 )
+
+[node name="Tile78" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 752, 14.5681 )
+
+[node name="Tile4" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 110.568 )
+
+[node name="Tile11" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 80, 14.568 )
+
+[node name="Tile22" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 270.568 )
+
+[node name="Tile69" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 366.568 )
+
+[node name="Tile34" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 336, 462.568 )
+
+[node name="Tile60" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 240, 14.568 )
+
+[node name="Tile47" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 560, 462.568 )
+
+[node name="Tile73" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 720, 462.568 )
+
+[node name="Tile56" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 560, 14.5681 )
+
+[node name="Tile17" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 142.568 )
+
+[node name="Tile65" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 14.5681 )
+
+[node name="Tile24" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 80, 462.568 )
+
+[node name="Tile36" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 400, 462.568 )
+
+[node name="Tile51" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 400, 14.568 )
+
+[node name="Tile41" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 206.568 )
+
+[node name="Tile66" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 78.568 )
+
+[node name="Tile5" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 176, 238.568 )
+
+[node name="Tile12" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 208, 14.5681 )
+
+[node name="Tile21" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 48, 462.568 )
+
+[node name="Tile33" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 368, 462.568 )
+
+[node name="Tile62" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 368, 14.568 )
+
+[node name="Tile49" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 174.568 )
+
+[node name="Tile67" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 46.568 )
+
+[node name="Tile63" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 110.568 )
+
+[node name="Tile64" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 208, 238.568 )
+
+[node name="Tile16" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 16, 238.568 )
+
+[node name="Tile28" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 208, 462.568 )
+
+[node name="Tile31" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 528, 462.568 )
+
+[node name="Tile75" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 688, 462.568 )
+
+[node name="Tile59" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 528, 14.568 )
+
+[node name="Tile46" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 334.568 )
+
+[node name="Tile76" parent="LevelMap" instance=ExtResource( 1 )]
+position = Vector2( 784, 398.568 )
+
+[node name="WhiteTile" parent="LevelMap" instance=ExtResource( 2 )]
+position = Vector2( 272, 462.568 )
+
+[node name="WhiteTile4" parent="LevelMap" instance=ExtResource( 2 )]
+position = Vector2( 112, 110.568 )
+
+[node name="WhiteTile9" parent="LevelMap" instance=ExtResource( 2 )]
+position = Vector2( 208, 110.568 )
+
+[node name="WhiteTile3" parent="LevelMap" instance=ExtResource( 2 )]
+position = Vector2( 240, 462.568 )
+
+[node name="WhiteTile5" parent="LevelMap" instance=ExtResource( 2 )]
+position = Vector2( 176, 110.568 )
+
+[node name="WhiteTile7" parent="LevelMap" instance=ExtResource( 2 )]
+position = Vector2( 272, 110.568 )
+
+[node name="WhiteTile2" parent="LevelMap" instance=ExtResource( 2 )]
+position = Vector2( 304, 462.568 )
+
+[node name="WhiteTile6" parent="LevelMap" instance=ExtResource( 2 )]
+position = Vector2( 144, 110.568 )
+
+[node name="WhiteTile8" parent="LevelMap" instance=ExtResource( 2 )]
+position = Vector2( 240, 110.568 )
+
+[node name="SpikeTile" parent="." instance=ExtResource( 3 )]
+position = Vector2( 48, 430.568 )
+rotation = 1.5708
+
+[node name="SpawnPoint" parent="." instance=ExtResource( 4 )]
+position = Vector2( 48, 46.568 )
+rotation = 3.14159
+
+[node name="ExitPoint" parent="." instance=ExtResource( 5 )]
+position = Vector2( 48, 142.568 )
+rotation = 3.14159

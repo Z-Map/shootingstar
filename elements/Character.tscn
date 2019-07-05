@@ -1,19 +1,28 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/Character.gd" type="Script" id=1]
+[ext_resource path="res://ressources/character.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+radius = 7.24693
+height = 14.192
 
 [node name="Character" type="KinematicBody2D"]
+collision_layer = 14
+script = ExtResource( 1 )
+anim_walking_frametime = 0.03
+trans_walking_frametime = 0.05
+trans_landing_frametime = 0.07
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 2 )
+[node name="CharSprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+vframes = 8
+hframes = 8
+frame = 18
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 10.0
+[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]

@@ -16,10 +16,43 @@ _global_script_class_icons={
 [application]
 
 config/name="Shooting star"
+run/main_scene="res://Menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://scripts/Global.gd"
+
+[display]
+
+window/size/width=1600
+window/size/height=960
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[input]
+
+Paint={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+Exit={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="surface"
+2d_physics/layer_2="character"
+2d_physics/layer_3="death"
+2d_physics/layer_4="special"
 
 [rendering]
 
 quality/driver/fallback_to_gles2=true
 vram_compression/import_etc=true
+environment/default_clear_color=Color( 1, 1, 1, 1 )
 environment/default_environment="res://default_env.tres"
