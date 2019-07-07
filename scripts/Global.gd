@@ -14,13 +14,17 @@ var level_finished: bool = false
 # écrire :
 # preload("res://levels/nom.tscn")
 # En modifiant "nom" par le nom du niveau.
-const levels = [preload("res://levels/tuto1.tscn"),
-	preload("res://levels/tuto2.tscn"),
-	preload("res://levels/tuto3.tscn"),
-	preload("res://levels/lvl1.tscn"),
+const levels = [preload("res://levels/lvl1.tscn"),
 	preload("res://levels/lvl2.tscn"),
 	preload("res://levels/lvl3.tscn"),
-	preload("res://levels/lvl4.tscn")
+	preload("res://levels/lvl4.tscn"),
+	preload("res://levels/lvl5.tscn"),
+	preload("res://levels/lvl6.tscn"),
+	preload("res://levels/lvl7.tscn"),
+	preload("res://levels/lvl8.tscn"),
+	preload("res://levels/lvl9.tscn"),
+	preload("res://levels/lvl10.tscn"),
+	preload("res://levels/lvl11.tscn")
 	]
 
 var current_level := 0

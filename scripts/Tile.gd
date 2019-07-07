@@ -38,12 +38,18 @@ func _process(delta):
 func set_paint(paint:int):
 	current_paint = paint
 	$visual.frame = paint
+	$speed_area/area.disabled = true
+	$gravity_area/area.disabled = true
 	if paint:
 		add_to_group("painted")
 		if paint == 3:
 			effect = $eclair
+			$speed_area/area.disabled = false
 		elif paint == 2:
 			effect = $gravite
+			$gravity_area/area.disabled = false
+		elif paint == 1:
+			effect = $bubble
 		set_anim()
 	else:
 		if is_in_group("painted"):
@@ -84,3 +90,19 @@ func _on_timeout():
 		current_effect = effect
 		current_effect.visible = true
 		$anim.play("sprites", 0, 1.5)
+	elif current_effect:
+		current_effect.visible = false
+		current_effect = null
+
+
+func _on_speed_area_body_entered(body):
+	body.be_the_flash(true)
+
+
+func _on_speed_area_body_exited(body):
+	body.be_the_flash(false)
+
+
+func _on_gavity_area_body_entered(body):
+	print(transform.y)
+	body.change_gravity(transform.y)

@@ -1,17 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/Tile.gd" type="Script" id=1]
 [ext_resource path="res://ressources/paints/White_Tile.png" type="Texture" id=2]
 [ext_resource path="res://ressources/paints/Peincil.png" type="Texture" id=3]
 [ext_resource path="res://ressources/paints/gravite.png" type="Texture" id=4]
 [ext_resource path="res://ressources/paints/eclair.png" type="Texture" id=5]
+[ext_resource path="res://ressources/paints/Bubble_tile_effect.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "sprites"
-length = 2.0
+length = 2.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("eclair:frame")
 tracks/0/interp = 1
@@ -36,6 +37,24 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("bubble:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 15.5, 6 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8, 16 )
 
 [node name="WhiteTile" type="StaticBody2D"]
 input_pickable = true
@@ -69,10 +88,37 @@ position = Vector2( 0, -32 )
 texture = ExtResource( 5 )
 vframes = 4
 hframes = 4
-frame = 14
+
+[node name="bubble" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -32 )
+texture = ExtResource( 6 )
+vframes = 4
+hframes = 4
 
 [node name="delay" type="Timer" parent="."]
+
+[node name="speed_area" type="Area2D" parent="."]
+position = Vector2( 0, -22 )
+input_pickable = false
+collision_layer = 8
+collision_mask = 2
+
+[node name="area" type="CollisionShape2D" parent="speed_area"]
+shape = SubResource( 3 )
+
+[node name="gravity_area" type="Area2D" parent="."]
+position = Vector2( 0, -32 )
+input_pickable = false
+collision_layer = 8
+collision_mask = 2
+
+[node name="area" type="CollisionShape2D" parent="gravity_area"]
+shape = SubResource( 4 )
 [connection signal="mouse_entered" from="." to="." method="_on_WhiteTile_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_WhiteTile_mouse_exited"]
 [connection signal="animation_finished" from="anim" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="delay" to="." method="_on_timeout"]
+[connection signal="body_entered" from="speed_area" to="." method="_on_speed_area_body_entered"]
+[connection signal="body_exited" from="speed_area" to="." method="_on_speed_area_body_exited"]
+[connection signal="body_entered" from="gravity_area" to="." method="_on_gavity_area_body_entered"]

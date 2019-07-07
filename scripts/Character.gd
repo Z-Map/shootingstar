@@ -8,8 +8,9 @@ export (float) var lifetime: float = 60.0
 
 export (float) var gravity_force: float = 500.0
 export (float) var walk_speed: float = 50.0
-export (float) var bounce_multiply: float = 500.0
+export (float) var bounce_multiply: float = 350.0
 export (float) var speed_modif: float = 0.05
+export (float) var flash_speed: float = 5.0
 
 
 export (int) var anim_idle_start: int = 0
@@ -40,8 +41,9 @@ export (int) var trans_death_start: int = 27
 export (int) var trans_death_end: int = 44
 export (float) var trans_death_frametime: float = 0.07
 
-var direction: float = 1
-var gravity_dir: float = 1
+var direction: Vector2 = Vector2(1, 0.0)
+var gravity_dir: Vector2 = Vector2(0.0, 1)
+var gravity_x: bool = false
 
 var falling: bool = false
 var landing: bool = false
@@ -67,6 +69,7 @@ var last_jump_bloc: int = 0
 var last_gravity_bloc: int = 0
 
 var on_ground:bool = false
+var flash:int = 0
 var dead:bool = false
 var go_to_heaven: bool = false
 
@@ -113,72 +116,56 @@ func process_special_bloc(colide: KinematicCollision2D):
 	var n = colide.collider
 	if n.current_paint == 1 and last_jump_bloc != colide.collider_id:
 		last_jump_bloc = colide.collider_id
-		inertia = colide.normal * bounce_multiply
-		gravity = -gravity * 0.1
-		velocity.y *= -1
+		var bounce_vec = colide.normal * bounce_multiply
 		if falling:
 			on_ground = false
+			velocity = inertia.bounce(colide.normal)
+			var bounce_acc = bounce_vec.length() / velocity.length()
+			if bounce_acc > 1.0:
+				velocity *= bounce_acc
 		else:
-			inertia.x = speed_mult * velocity.x * 0.2
-	elif n.current_paint == 2 and last_gravity_bloc != colide.collider_id:
-		last_gravity_bloc = colide.collider_id
-		invert_gravity()
-		inertia.y = 0.0
-		if abs(colide.normal.x) > 0.01:
-			inertia.x = 2 * colide.normal.x
-			if (colide.normal.x < 0 and target_velocity.x > 0) or (colide.normal.x > 0 and target_velocity.x < 0):
-				target_velocity.x *= -1
-			if round(colide.normal.x) == direction:
-				direction = -direction
-				$CharSprite.scale.x = -$CharSprite.scale.x
-	elif n.current_paint == 3:
-		speed_mult += speed_modif * 2 * abs(colide.normal.y)
-		grav_speed_mult += speed_modif * 2 * abs(colide.normal.x)
-		inertia.x += speed_mult * direction
-		inertia.y *= 1 + (grav_speed_mult * 0.012) 
-
-func _physics_process(delta):
-	if dead or go_to_heaven:
-		return
-	if not is_on_floor():
-		gravity += Vector2(0, gravity_force * delta * gravity_dir)
-	if walking:
-		target_velocity = Vector2(walk_speed * direction * speed_mult, 0)
-	velocity = gravity + target_velocity + inertia
-	inertia -= inertia * delta
-	var snap = Vector2(0, gravity_dir)
-	velocity = move_and_slide_with_snap(velocity, snap, Vector2(0, -gravity_dir))
+			velocity += bounce_vec
+		
+func process_collision():
 	on_ground = is_on_floor()
-	if speed_mult > 1.0:
-		speed_mult = clamp(speed_mult - speed_modif, 1.0, 10.0)
-	if grav_speed_mult > 1.0:
-		grav_speed_mult = clamp(grav_speed_mult - speed_modif, 1.0, 10.0)
 	var bump = false
 	var touch_paint = false
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if round(collision.normal.x) == -direction:
+		if (collision.normal + direction).length() < 0.1:
 			bump = true
-		if collision.collider.is_in_group("painted"):
+		if collision.collider.is_in_group("painted") and collision.collider.current_paint == 1:
 			process_special_bloc(collision)
 			touch_paint = true
-		elif bump and falling:
-			bump = false
-			direction = -direction
-			$CharSprite.scale.x = -$CharSprite.scale.x
-			target_velocity.x = velocity.x
 	if not touch_paint:
 		last_jump_bloc = 0
-		last_gravity_bloc = 0
+
+func _physics_process(delta):
+	if dead or go_to_heaven:
+		return
+	if flash:
+		speed_mult += ((flash_speed - speed_mult) / 2) * delta
+	elif speed_mult > 1.0:
+		speed_mult = clamp(speed_mult - speed_modif, 1.0, flash_speed)
+	inertia += gravity_dir * gravity_force * delta
+	if speed_mult > 1.0:
+		speed_mult = clamp(speed_mult - speed_modif, 1.0, .0)
+	if walking:
+		target_velocity = direction * walk_speed * speed_mult
+	else:
+		target_velocity = Vector2(0,0)
+	if (inertia * direction.abs()).length() < target_velocity.length():
+		inertia += target_velocity
+	var snap = gravity_dir 
+	velocity = move_and_slide_with_snap(inertia, snap, -gravity_dir)
+	var bump = process_collision()
 	if on_ground:
 		if falling:
 			falling = false
 			landing = true
 			walking = false
 			set_transition()
-			target_velocity = Vector2(0.0,0.0)
-			gravity = Vector2(0,0)
-			inertia = Vector2(0,0)
+			velocity = Vector2(0,0)
 		elif walking and bump:
 			direction = -direction
 			$CharSprite.scale.x = -$CharSprite.scale.x
@@ -187,6 +174,7 @@ func _physics_process(delta):
 		walking = false
 		landing = false
 		set_transition()
+	inertia = velocity
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -216,7 +204,33 @@ func _process(delta):
 func invert_gravity():
 	gravity_dir = -gravity_dir
 	$CharSprite.scale.y = -$CharSprite.scale.y
-	gravity = Vector2(0,gravity_dir)
+	gravity = gravity_dir
+
+func change_gravity(surface_vec:Vector2):
+	if abs(surface_vec.x) > 0.01:
+		if gravity_x:
+			invert_gravity()
+		else:
+			gravity_x = true
+			direction = Vector2(0.0, direction.x * gravity_dir.y * -surface_vec.x)
+			gravity_dir = Vector2(-surface_vec.x, 0)
+			$CharSprite.scale.x =  abs($CharSprite.scale.x) * direction.y
+			$CharSprite.scale.y =  abs($CharSprite.scale.y) * gravity_dir.x
+			transform.x = Vector2(0,1)
+			transform.y = Vector2(1,0)
+		inertia.x = 0.0
+	else:
+		if gravity_x:
+			gravity_x = false
+			direction = Vector2(direction.y * gravity_dir.x * -surface_vec.y, 0.0)
+			gravity_dir = Vector2(0, -surface_vec.y)
+			$CharSprite.scale.x =  abs($CharSprite.scale.x) * direction.x
+			$CharSprite.scale.y =  abs($CharSprite.scale.y) * gravity_dir.y
+			transform.x = Vector2(1,0)
+			transform.y = Vector2(0,1)
+		else:
+			invert_gravity()
+		inertia.y = 0.0
 
 func kill():
 	dead = true
@@ -227,6 +241,12 @@ func win():
 	$CharSprite.scale.y = 1
 	speed_mult = 1.0
 	set_transition()
+	
+func be_the_flash(to_be_or_not_to_be: bool = true):
+	if to_be_or_not_to_be:
+		flash += 1 
+	else:
+		flash -= 1
 
 func _on_lifetime_timeout():
 	$lifetime.stop()
