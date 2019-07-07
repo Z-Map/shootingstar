@@ -16,9 +16,6 @@ zoom = Vector2( 0.4, 0.4 )
 [node name="SpawnPoint" parent="." instance=ExtResource( 1 )]
 position = Vector2( 128, 336 )
 
-[node name="SpawnPoint2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 128, 336 )
-
 [node name="ExitPoint" parent="." instance=ExtResource( 2 )]
 position = Vector2( 400, 80 )
 

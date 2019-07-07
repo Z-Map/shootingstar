@@ -24,10 +24,11 @@ const levels = [preload("res://levels/lvl1.tscn"),
 	preload("res://levels/lvl8.tscn"),
 	preload("res://levels/lvl9.tscn"),
 	preload("res://levels/lvl10.tscn"),
-	preload("res://levels/lvl11.tscn")
+	preload("res://levels/lvl11.tscn"),
+	preload("res://levels/Testlevel.tscn")
 	]
 
-var current_level := 0
+var current_level := 11
 
 func _ready():
 	var root = get_tree().get_root()

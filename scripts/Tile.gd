@@ -105,4 +105,4 @@ func _on_speed_area_body_exited(body):
 
 func _on_gavity_area_body_entered(body):
 	print(transform.y)
-	body.change_gravity(transform.y)
+	body.change_gravity(-transform.y, get_rid().get_id())

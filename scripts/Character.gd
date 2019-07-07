@@ -12,6 +12,7 @@ export (float) var bounce_multiply: float = 350.0
 export (float) var speed_modif: float = 0.05
 export (float) var flash_speed: float = 5.0
 
+export (Color) var flash_color: Color = Color.orange
 
 export (int) var anim_idle_start: int = 0
 export (int) var anim_idle_end: int = 4
@@ -139,23 +140,25 @@ func process_collision():
 			touch_paint = true
 	if not touch_paint:
 		last_jump_bloc = 0
+	return bump
 
 func _physics_process(delta):
 	if dead or go_to_heaven:
 		return
 	if flash:
-		speed_mult += ((flash_speed - speed_mult) / 2) * delta
+		speed_mult = clamp(speed_mult + (flash_speed * delta), 1.0, flash_speed)
 	elif speed_mult > 1.0:
-		speed_mult = clamp(speed_mult - speed_modif, 1.0, flash_speed)
-	inertia += gravity_dir * gravity_force * delta
-	if speed_mult > 1.0:
-		speed_mult = clamp(speed_mult - speed_modif, 1.0, .0)
+		speed_mult = clamp(speed_mult - (flash_speed * delta), 1.0, flash_speed)
 	if walking:
 		target_velocity = direction * walk_speed * speed_mult
+		var dif = target_velocity.length() - inertia.length()
+		if dif > 0:
+			inertia += target_velocity * (dif / target_velocity.length())
+		elif dif < 0:
+			inertia -= (inertia * (abs(dif) / inertia.length())) * delta * speed_mult
 	else:
 		target_velocity = Vector2(0,0)
-	if (inertia * direction.abs()).length() < target_velocity.length():
-		inertia += target_velocity
+	inertia += gravity_dir * gravity_force * delta
 	var snap = gravity_dir 
 	velocity = move_and_slide_with_snap(inertia, snap, -gravity_dir)
 	var bump = process_collision()
@@ -178,6 +181,10 @@ func _physics_process(delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if flash:
+		$CharSprite.modulate = flash_color
+	else:
+		$CharSprite.modulate = Color.white
 	transition += delta
 	if go_to_heaven:
 		$CharSprite.global_transform.origin.y -= 32 * delta 
@@ -206,13 +213,16 @@ func invert_gravity():
 	$CharSprite.scale.y = -$CharSprite.scale.y
 	gravity = gravity_dir
 
-func change_gravity(surface_vec:Vector2):
+func change_gravity(surface_vec:Vector2, bloc_id: int):
+	if bloc_id == last_gravity_bloc:
+		return false
+	last_gravity_bloc = bloc_id
 	if abs(surface_vec.x) > 0.01:
 		if gravity_x:
 			invert_gravity()
 		else:
 			gravity_x = true
-			direction = Vector2(0.0, direction.x * gravity_dir.y * -surface_vec.x)
+			direction = Vector2(0.0, gravity_dir.y * -surface_vec.x)
 			gravity_dir = Vector2(-surface_vec.x, 0)
 			$CharSprite.scale.x =  abs($CharSprite.scale.x) * direction.y
 			$CharSprite.scale.y =  abs($CharSprite.scale.y) * gravity_dir.x
@@ -222,7 +232,7 @@ func change_gravity(surface_vec:Vector2):
 	else:
 		if gravity_x:
 			gravity_x = false
-			direction = Vector2(direction.y * gravity_dir.x * -surface_vec.y, 0.0)
+			direction = Vector2(gravity_dir.x * -surface_vec.y, 0.0)
 			gravity_dir = Vector2(0, -surface_vec.y)
 			$CharSprite.scale.x =  abs($CharSprite.scale.x) * direction.x
 			$CharSprite.scale.y =  abs($CharSprite.scale.y) * gravity_dir.y
@@ -231,6 +241,7 @@ func change_gravity(surface_vec:Vector2):
 		else:
 			invert_gravity()
 		inertia.y = 0.0
+	return true
 
 func kill():
 	dead = true

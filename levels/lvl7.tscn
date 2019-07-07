@@ -16,39 +16,24 @@ zoom = Vector2( 0.4, 0.4 )
 [node name="SpawnPoint" parent="." instance=ExtResource( 1 )]
 position = Vector2( 16, 256 )
 
-[node name="SpawnPoint2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 16, 256 )
-
 [node name="ExitPoint" parent="." instance=ExtResource( 2 )]
-position = Vector2( 512, 128 )
+position = Vector2( 496, 128 )
 rotation = -3.14159
 
 [node name="Level" type="Node2D" parent="."]
 
 [node name="WhiteTile12" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 112, 288 )
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile14" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 352, 272 )
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile15" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 416, 272 )
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile13" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 208, 128 )
 rotation = -1.5708
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="BlackTile2" parent="Level" instance=ExtResource( 4 )]
 position = Vector2( 16, 288 )
@@ -87,7 +72,7 @@ position = Vector2( 240, 96 )
 position = Vector2( 480, 272 )
 
 [node name="BlackTile32" parent="Level" instance=ExtResource( 4 )]
-position = Vector2( 320, 208 )
+position = Vector2( 320, 192 )
 
 [node name="BlackTile38" parent="Level" instance=ExtResource( 4 )]
 position = Vector2( 448, 272 )
@@ -105,7 +90,7 @@ position = Vector2( 240, 128 )
 position = Vector2( 320, 272 )
 
 [node name="BlackTile37" parent="Level" instance=ExtResource( 4 )]
-position = Vector2( 480, 96 )
+position = Vector2( 464, 96 )
 
 [node name="BlackTile13" parent="Level" instance=ExtResource( 4 )]
 position = Vector2( 208, 224 )
@@ -117,7 +102,7 @@ position = Vector2( 240, 224 )
 position = Vector2( 320, 304 )
 
 [node name="BlackTile35" parent="Level" instance=ExtResource( 4 )]
-position = Vector2( 512, 96 )
+position = Vector2( 496, 96 )
 
 [node name="BlackTile14" parent="Level" instance=ExtResource( 4 )]
 position = Vector2( 208, 256 )
@@ -129,7 +114,7 @@ position = Vector2( 240, 256 )
 position = Vector2( 320, 336 )
 
 [node name="BlackTile36" parent="Level" instance=ExtResource( 4 )]
-position = Vector2( 448, 96 )
+position = Vector2( 432, 96 )
 
 [node name="BlackTile15" parent="Level" instance=ExtResource( 4 )]
 position = Vector2( 224, 368 )
@@ -144,7 +129,7 @@ position = Vector2( 320, 368 )
 position = Vector2( 544, 272 )
 
 [node name="BlackTile39" parent="Level" instance=ExtResource( 4 )]
-position = Vector2( 384, 208 )
+position = Vector2( 384, 192 )
 
 [node name="BlackTile34" parent="Level" instance=ExtResource( 4 )]
 position = Vector2( 384, 272 )
@@ -159,7 +144,7 @@ position = Vector2( 288, 368 )
 position = Vector2( 512, 272 )
 
 [node name="BlackTile31" parent="Level" instance=ExtResource( 4 )]
-position = Vector2( 352, 208 )
+position = Vector2( 352, 192 )
 
 [node name="BlackTile10" parent="Level" instance=ExtResource( 4 )]
 position = Vector2( 208, 96 )

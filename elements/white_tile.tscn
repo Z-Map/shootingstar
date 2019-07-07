@@ -54,7 +54,7 @@ tracks/2/keys = {
 extents = Vector2( 15.5, 6 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 8, 16 )
+extents = Vector2( 10, 16 )
 
 [node name="WhiteTile" type="StaticBody2D"]
 input_pickable = true
