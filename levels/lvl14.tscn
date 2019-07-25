@@ -1,0 +1,224 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://elements/SpawnPoint.tscn" type="PackedScene" id=1]
+[ext_resource path="res://elements/ExitPoint.tscn" type="PackedScene" id=2]
+[ext_resource path="res://elements/white_tile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://elements/black_tile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://elements/DeadTrigger.tscn" type="PackedScene" id=5]
+[ext_resource path="res://elements/spike_tile.tscn" type="PackedScene" id=6]
+
+[node name="tuto1" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+zoom = Vector2( 0.4, 0.4 )
+
+[node name="SpawnPoint" parent="." instance=ExtResource( 1 )]
+position = Vector2( 16, 176 )
+
+[node name="ExitPoint" parent="." instance=ExtResource( 2 )]
+position = Vector2( 592, 48 )
+rotation = 3.14159
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="WhiteTile11" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( 48, 208 )
+
+[node name="WhiteTile13" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( 224, 368 )
+
+[node name="WhiteTile15" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( 288, 368 )
+
+[node name="WhiteTile17" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( 352, 368 )
+
+[node name="WhiteTile19" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( 272, 16 )
+rotation = 3.14159
+
+[node name="WhiteTile22" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( 176, 16 )
+rotation = 3.14159
+
+[node name="WhiteTile23" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( 80, 16 )
+rotation = 3.14159
+
+[node name="WhiteTile20" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( 368, 16 )
+rotation = 3.14159
+
+[node name="WhiteTile21" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( 464, 16 )
+rotation = 3.14159
+
+[node name="WhiteTile24" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( 560, 16 )
+rotation = 3.14159
+
+[node name="WhiteTile25" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( 416, 368 )
+
+[node name="BlackTile" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 16, 208 )
+
+[node name="BlackTile3" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 16, 240 )
+
+[node name="BlackTile7" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 16, 16 )
+
+[node name="BlackTile26" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 16, 336 )
+
+[node name="BlackTile12" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 208, 16 )
+
+[node name="BlackTile29" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 192, 368 )
+
+[node name="BlackTile33" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 608, 368 )
+
+[node name="BlackTile43" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 640, 368 )
+
+[node name="BlackTile44" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 0, 368 )
+
+[node name="BlackTile40" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 624, 336 )
+
+[node name="BlackTile18" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 400, 16 )
+
+[node name="BlackTile9" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 112, 16 )
+
+[node name="BlackTile30" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 96, 368 )
+
+[node name="BlackTile38" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 512, 368 )
+
+[node name="BlackTile15" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 304, 16 )
+
+[node name="BlackTile21" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 496, 16 )
+
+[node name="BlackTile4" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 48, 240 )
+
+[node name="BlackTile5" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 544, 112 )
+
+[node name="BlackTile6" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 48, 16 )
+
+[node name="BlackTile27" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 32, 368 )
+
+[node name="BlackTile34" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 448, 368 )
+
+[node name="BlackTile35" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 384, 368 )
+
+[node name="BlackTile41" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 320, 368 )
+
+[node name="BlackTile42" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 256, 368 )
+
+[node name="BlackTile13" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 240, 16 )
+
+[node name="BlackTile20" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 432, 16 )
+
+[node name="BlackTile10" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 144, 16 )
+
+[node name="BlackTile31" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 128, 368 )
+
+[node name="BlackTile37" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 544, 368 )
+
+[node name="BlackTile16" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 336, 16 )
+
+[node name="BlackTile22" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 528, 16 )
+
+[node name="BlackTile25" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 592, 16 )
+
+[node name="BlackTile28" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 64, 368 )
+
+[node name="BlackTile36" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 480, 368 )
+
+[node name="BlackTile32" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 160, 368 )
+
+[node name="BlackTile39" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 576, 368 )
+
+[node name="BlackTile24" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 624, 16 )
+
+[node name="DeadTrigger" parent="." instance=ExtResource( 5 )]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="SpikeTile11" parent="." instance=ExtResource( 6 )]
+position = Vector2( 416, 48 )
+rotation = -3.14159
+
+[node name="SpikeTile16" parent="." instance=ExtResource( 6 )]
+position = Vector2( 320, 48 )
+rotation = -3.14159
+
+[node name="SpikeTile17" parent="." instance=ExtResource( 6 )]
+position = Vector2( 48, 336 )
+rotation = -4.71238
+
+[node name="SpikeTile25" parent="." instance=ExtResource( 6 )]
+position = Vector2( 592, 336 )
+rotation = -7.85397
+
+[node name="SpikeTile20" parent="." instance=ExtResource( 6 )]
+position = Vector2( 512, 112 )
+rotation = -1.57079
+
+[node name="SpikeTile24" parent="." instance=ExtResource( 6 )]
+position = Vector2( 544, 144 )
+rotation = -3.14159
+
+[node name="SpikeTile22" parent="." instance=ExtResource( 6 )]
+position = Vector2( 544, 80 )
+
+[node name="SpikeTile18" parent="." instance=ExtResource( 6 )]
+position = Vector2( 224, 48 )
+rotation = -3.14159
+
+[node name="SpikeTile19" parent="." instance=ExtResource( 6 )]
+position = Vector2( 128, 48 )
+rotation = -3.14159
+
+[node name="SpikeTile21" parent="." instance=ExtResource( 6 )]
+position = Vector2( 32, 48 )
+rotation = -3.14159
+
+[node name="SpikeTile12" parent="." instance=ExtResource( 6 )]
+position = Vector2( 512, 48 )
+rotation = -3.14159
+
+[node name="SpikeTile23" parent="." instance=ExtResource( 6 )]
+position = Vector2( 624, 48 )
+rotation = -3.14159

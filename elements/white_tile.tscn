@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/Tile.gd" type="Script" id=1]
-[ext_resource path="res://ressources/paints/White_Tile.png" type="Texture" id=2]
-[ext_resource path="res://ressources/paints/Peincil.png" type="Texture" id=3]
+[ext_resource path="res://ressources/paints/All_Tile.png" type="Texture" id=2]
+[ext_resource path="res://ressources/paints/Pencil.png" type="Texture" id=3]
 [ext_resource path="res://ressources/paints/gravite.png" type="Texture" id=4]
 [ext_resource path="res://ressources/paints/eclair.png" type="Texture" id=5]
 [ext_resource path="res://ressources/paints/Bubble_tile_effect.png" type="Texture" id=6]
@@ -54,7 +54,7 @@ tracks/2/keys = {
 extents = Vector2( 15.5, 6 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 10, 16 )
+extents = Vector2( 8, 16 )
 
 [node name="WhiteTile" type="StaticBody2D"]
 input_pickable = true

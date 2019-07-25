@@ -9,9 +9,9 @@ export (int) var paint: int = 0
 func test_display():
 	if paint == 3 or paint == 0:
 		visible = true
-	elif paint == 2 and Global.current_level > 3:
+	elif paint == 2 and Global.current_level > 2:
 		visible = true
-	elif paint == 1 and Global.current_level > 1:
+	elif paint == 1 and Global.current_level > 0:
 		visible = true
 	else:
 		visible = false

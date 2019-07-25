@@ -24,92 +24,53 @@ position = Vector2( 496, 48 )
 [node name="WhiteTile11" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 272, 240 )
 rotation = -1.57079
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile18" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 192, 224 )
 rotation = 1.57079
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile15" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 272, 144 )
 rotation = -1.57079
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile20" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 192, 128 )
 rotation = 1.57079
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile12" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 272, 208 )
 rotation = -1.57079
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile21" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 192, 192 )
 rotation = 1.57079
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile17" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 272, 112 )
 rotation = -1.57079
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile22" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 192, 96 )
 rotation = 1.57079
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile14" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 272, 176 )
 rotation = -1.57079
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile19" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 192, 160 )
 rotation = 1.57079
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile16" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 272, 80 )
 rotation = -1.57079
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile23" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 192, 64 )
 rotation = 1.57079
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="WhiteTile13" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 240, 288 )
-min_anim_time = 1.0
-max_anim_time = 5.0
-current_paint = 0
 
 [node name="BlackTile2" parent="Level" instance=ExtResource( 4 )]
 position = Vector2( 16, 288 )
@@ -157,4 +118,5 @@ position = Vector2( 496, 80 )
 position = Vector2( 208, 288 )
 
 [node name="DeadTrigger" parent="." instance=ExtResource( 5 )]
+position = Vector2( -16, -80 )
 scale = Vector2( 0.5, 0.5 )

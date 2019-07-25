@@ -244,13 +244,16 @@ func change_gravity(surface_vec:Vector2, bloc_id: int):
 	return true
 
 func kill():
+	Global.death_counter += 1
 	dead = true
 	set_transition()
 
 func win():
 	go_to_heaven = true
-	$CharSprite.scale.y = 1
 	speed_mult = 1.0
+	$CharSprite.scale = Vector2(1, 1)
+	transform.x = Vector2(1,0)
+	transform.y = Vector2(0,1)
 	set_transition()
 	
 func be_the_flash(to_be_or_not_to_be: bool = true):

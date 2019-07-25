@@ -9,4 +9,4 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
-	$Viewport.unhandled_input(event)
+	$lvlViewport.unhandled_input(event)

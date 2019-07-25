@@ -58,13 +58,36 @@ func set_paint(paint:int):
 
 func set_anim():
 	if $delay.is_stopped() and not $anim.is_playing():
-		$delay.start(rand_range(min_anim_time, max_anim_time))
+		var min_t = min_anim_time
+		var max_t = max_anim_time
+		if current_paint == 2:
+			min_t *= 0.9
+			max_t *= 0.25
+		elif current_paint == 1:
+			min_t *= 3
+			max_t *= 2
+		$delay.start(rand_range(min_t, max_t))
 
 func _input(event):
-	if mouse_on and event.is_action_pressed("Paint"):
-		set_paint(Global.paint_selected)
-		$Target_paint.visible = false
-		Global.paint_autoset = true
+	if Global.paint_selected != current_paint:
+		if mouse_on and event.is_action_pressed("Paint"):
+			set_paint(Global.paint_selected)
+			$Target_paint.visible = false
+			Global.paint_autoset = true
+		elif event is InputEventScreenTouch and event.pressed:
+			var tr = get_canvas_transform()
+			var pos = Vector2(event.position.x / tr.x.x, event.position.y / tr.y.y)
+			if Rect2(global_position - Vector2(16,16),Vector2(32,32)).has_point(pos):
+				print("I'm in " + name)
+				set_paint(Global.paint_selected)
+				$Target_paint.visible = false
+		elif event is InputEventScreenDrag:
+			var tr = get_canvas_transform()
+			var pos = Vector2(event.position.x / tr.x.x, event.position.y / tr.y.y)
+			if Rect2(global_position - Vector2(16,16),Vector2(32,32)).has_point(pos):
+				print("I'm passing through " + name)
+				set_paint(Global.paint_selected)
+				$Target_paint.visible = false
 
 func _on_WhiteTile_mouse_entered():
 	mouse_on = true
@@ -79,20 +102,20 @@ func _on_WhiteTile_mouse_exited():
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
+	if current_paint:
+		set_anim()
+	elif current_effect:
+		current_effect.visible = false
+		current_effect = null
+
+func _on_timeout():
 	if current_effect:
 		current_effect.visible = false
 		current_effect = null
-	if current_paint:
-		set_anim()
-
-func _on_timeout():
 	if effect:
 		current_effect = effect
 		current_effect.visible = true
 		$anim.play("sprites", 0, 1.5)
-	elif current_effect:
-		current_effect.visible = false
-		current_effect = null
 
 
 func _on_speed_area_body_entered(body):
@@ -104,5 +127,4 @@ func _on_speed_area_body_exited(body):
 
 
 func _on_gavity_area_body_entered(body):
-	print(transform.y)
 	body.change_gravity(-transform.y, get_rid().get_id())

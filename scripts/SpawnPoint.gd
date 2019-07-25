@@ -26,11 +26,12 @@ func _ready():
 
 
 func _on_Timer_timeout():
-	if Global.level_finished:
+	if not Global.should_spawn:
 		$spawntime.stop()
 		$anim.stop()
 		$visual.frame = 0
 	else:
+		Global.level_resetable = true
 		var inst:KinematicBody2D = char_elm.instance()
 		inst.transform.origin = $SpawnPosition.global_transform.origin
 		inst.lifetime = Char_Lifetime

@@ -23,21 +23,26 @@ position = Vector2( 400, 80 )
 
 [node name="WhiteTile11" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 336, 336 )
+rotation = -1.57079
 
 [node name="WhiteTile16" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 304, 368 )
 
 [node name="WhiteTile12" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 336, 304 )
+rotation = -1.57079
 
 [node name="WhiteTile13" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 336, 272 )
+rotation = -1.57079
 
 [node name="WhiteTile14" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 336, 240 )
+rotation = -1.57079
 
 [node name="WhiteTile15" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 336, 208 )
+rotation = -1.57079
 
 [node name="BlackTile2" parent="Level" instance=ExtResource( 4 )]
 position = Vector2( 128, 368 )
